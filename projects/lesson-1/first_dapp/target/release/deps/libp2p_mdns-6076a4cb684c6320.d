@@ -1,0 +1,10 @@
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/libp2p_mdns-6076a4cb684c6320.rmeta: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/behaviour.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/dns.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/service.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/liblibp2p_mdns-6076a4cb684c6320.rlib: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/behaviour.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/dns.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/service.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/libp2p_mdns-6076a4cb684c6320.d: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/behaviour.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/dns.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/service.rs
+
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/lib.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/behaviour.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/dns.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/libp2p-mdns-0.13.1/src/service.rs:

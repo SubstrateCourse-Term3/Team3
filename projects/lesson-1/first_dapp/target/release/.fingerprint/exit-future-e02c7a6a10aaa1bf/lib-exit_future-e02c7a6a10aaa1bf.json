@@ -1,0 +1,1 @@
+{"rustc":6484268071756738333,"features":"[]","target":4839906802890541356,"profile":2574335274271406459,"path":18080384569740234519,"deps":[[16567062584811463060,"futures",false,12821449322472999910]],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/exit-future-e02c7a6a10aaa1bf/dep-lib-exit_future-e02c7a6a10aaa1bf"}}],"rustflags":[],"metadata":6813948646486027746}

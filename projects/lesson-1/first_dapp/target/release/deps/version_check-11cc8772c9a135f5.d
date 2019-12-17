@@ -1,0 +1,10 @@
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/version_check-11cc8772c9a135f5.rmeta: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/version.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/channel.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/date.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/libversion_check-11cc8772c9a135f5.rlib: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/version.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/channel.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/date.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/version_check-11cc8772c9a135f5.d: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/version.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/channel.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/date.rs
+
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/lib.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/version.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/channel.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.1/src/date.rs:

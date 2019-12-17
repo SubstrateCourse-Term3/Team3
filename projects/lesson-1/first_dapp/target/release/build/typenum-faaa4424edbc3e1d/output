@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/build/typenum-faaa4424edbc3e1d/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/build/typenum-faaa4424edbc3e1d/out/op.rs

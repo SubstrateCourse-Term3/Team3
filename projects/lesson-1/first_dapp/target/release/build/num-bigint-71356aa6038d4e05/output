@@ -1,0 +1,2 @@
+cargo:rustc-cfg=has_i128
+cargo:rerun-if-changed=/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/num-bigint-0.2.3/build.rs

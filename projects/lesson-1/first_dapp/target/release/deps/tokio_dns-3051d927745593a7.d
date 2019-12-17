@@ -1,0 +1,10 @@
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/tokio_dns-3051d927745593a7.rmeta: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/endpoint.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/net.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/resolver.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/libtokio_dns-3051d927745593a7.rlib: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/endpoint.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/net.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/resolver.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/tokio_dns-3051d927745593a7.d: /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/lib.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/endpoint.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/net.rs /Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/resolver.rs
+
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/lib.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/endpoint.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/net.rs:
+/Users/zhuqiang/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/tokio-dns-unofficial-0.4.0/src/resolver.rs:

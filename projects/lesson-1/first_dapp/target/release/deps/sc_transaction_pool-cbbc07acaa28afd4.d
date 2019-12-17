@@ -1,0 +1,10 @@
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/sc_transaction_pool-cbbc07acaa28afd4.rmeta: /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/lib.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/api.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/maintainer.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/error.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/libsc_transaction_pool-cbbc07acaa28afd4.rlib: /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/lib.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/api.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/maintainer.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/error.rs
+
+/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/deps/sc_transaction_pool-cbbc07acaa28afd4.d: /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/lib.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/api.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/maintainer.rs /Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/error.rs
+
+/Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/lib.rs:
+/Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/api.rs:
+/Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/maintainer.rs:
+/Users/zhuqiang/.cargo/git/checkouts/substrate-7e08433d4c370a21/6653043/client/transaction-pool/src/error.rs:

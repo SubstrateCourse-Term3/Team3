@@ -1,0 +1,130 @@
+    Updating `git://mirrors.ustc.edu.cn/crates.io-index` index
+   Compiling libc v0.2.66
+   Compiling cfg-if v0.1.10
+   Compiling proc-macro2 v1.0.6
+   Compiling getrandom v0.1.13
+   Compiling serde v1.0.104
+   Compiling unicode-xid v0.2.0
+   Compiling ryu v1.0.2
+   Compiling byteorder v1.3.2
+   Compiling semver-parser v0.7.0
+   Compiling syn v1.0.11
+   Compiling ppv-lite86 v0.2.6
+   Compiling log v0.4.8
+   Compiling itoa v0.4.4
+   Compiling same-file v1.0.5
+   Compiling remove_dir_all v0.5.2
+   Compiling rustc-demangle v0.1.16
+   Compiling semver v0.6.0
+   Compiling c2-chacha v0.2.3
+   Compiling walkdir v2.2.9
+   Compiling build-helper v0.1.1
+   Compiling fs2 v0.4.3
+   Compiling quote v1.0.2
+   Compiling semver v0.9.0
+   Compiling toml v0.5.5
+   Compiling serde_json v1.0.44
+   Compiling parity-wasm v0.32.0
+   Compiling rand_core v0.5.1
+   Compiling wasm-gc-api v0.1.11
+   Compiling rand_chacha v0.2.1
+   Compiling rand v0.7.2
+   Compiling tempfile v3.1.0
+   Compiling serde_derive v1.0.104
+   Compiling cargo_metadata v0.8.2
+   Compiling substrate-wasm-builder v1.0.8
+   Compiling wasm-build-runner-impl v1.0.0 (/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/wbuild-runner/first-dapp-runtime)
+    Finished release [optimized] target(s) in 4m 50s
+     Running `/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/wbuild-runner/first-dapp-runtime/target/release/wasm-build-runner-impl`
+   Compiling proc-macro2 v1.0.6
+   Compiling unicode-xid v0.2.0
+   Compiling syn v1.0.11
+   Compiling serde v1.0.103
+   Compiling memchr v2.2.1
+   Compiling crunchy v0.2.2
+   Compiling byteorder v1.3.2
+   Compiling lazy_static v1.4.0
+   Compiling arrayvec v0.5.1
+   Compiling static_assertions v1.1.0
+   Compiling autocfg v0.1.7
+   Compiling regex-syntax v0.6.12
+   Compiling rustc-hex v2.0.1
+   Compiling sp-std v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling log v0.4.8
+   Compiling cfg-if v0.1.10
+   Compiling zeroize v1.1.0
+   Compiling hash-db v0.15.2
+   Compiling integer-sqrt v0.1.2
+   Compiling arrayvec v0.4.12
+   Compiling nodrop v0.1.14
+   Compiling semver-parser v0.7.0
+   Compiling constant_time_eq v0.1.4
+   Compiling bitmask v0.5.0
+   Compiling substrate-wasm-builder-runner v1.0.4 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling fixed-hash v0.5.1
+   Compiling thread_local v0.3.6
+   Compiling semver v0.9.0
+   Compiling hash256-std-hasher v0.15.2
+   Compiling rustc_version v0.2.3
+   Compiling num-traits v0.2.10
+   Compiling first-dapp-runtime v2.0.0 (/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/runtime)
+   Compiling uint v0.8.2
+   Compiling aho-corasick v0.7.6
+   Compiling blake2-rfc v0.2.18
+   Compiling quote v1.0.2
+   Compiling safe-mix v1.0.0
+   Compiling regex v1.3.1
+   Compiling Inflector v0.11.4
+   Compiling serde_derive v1.0.103
+   Compiling sp-debug-derive v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling proc-macro-hack v0.5.11
+   Compiling impl-trait-for-tuples v0.1.3
+   Compiling frame-support-procedural-tools-derive v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling paste-impl v0.1.6
+   Compiling paste v0.1.6
+   Compiling sp-core-storage v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling toml v0.5.5
+   Compiling proc-macro-crate v0.1.4
+   Compiling frame-support-procedural-tools v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling parity-scale-codec-derive v1.1.0
+   Compiling sp-runtime-interface-proc-macro v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-api-proc-macro v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling frame-support-procedural v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling parity-scale-codec v1.1.0
+   Compiling impl-codec v0.4.2
+   Compiling sp-arithmetic v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling primitive-types v0.6.1
+   Compiling sp-runtime-interface v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-core v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-inherents v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-io v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling frame-metadata v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-finality-tracker v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sc-application-crypto v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-runtime v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-version v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling frame-support v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-staking v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-api v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-timestamp v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-finality-grandpa v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-block-builder v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-session v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-offchain v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-transaction-pool-runtime-api v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling sp-consensus-aura v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling frame-system v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-transaction-payment-rpc-runtime-api v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-timestamp v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-finality-tracker v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-transaction-payment v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling frame-executive v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-balances v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-sudo v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-indices v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-randomness-collective-flip v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-session v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-grandpa v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling pallet-aura v2.0.0 (https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c#66530439)
+   Compiling first-dapp-runtime-wasm v1.0.0 (/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/target/release/wbuild/first-dapp-runtime)
+    Finished release [optimized] target(s) in 6m 04s

@@ -1,0 +1,13 @@
+
+				[package]
+				name = "first-dapp-runtime-wasm"
+				version = "1.0.0"
+				edition = "2018"
+
+				[lib]
+				name = "first_dapp_runtime"
+				crate-type = ["cdylib"]
+
+				[dependencies]
+				wasm_project = { package = "first-dapp-runtime", path = "/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/runtime", default-features = false }
+			

@@ -1,0 +1,5 @@
+cargo:rustc-env=VERGEN_SHA_SHORT=39d64c9
+cargo:rerun-if-changed=.git/HEAD
+cargo:rerun-if-changed=.git/refs/heads/master
+
+cargo:rerun-if-changed=/Users/zhuqiang/Team3/projects/lesson-1/first_dapp/.git/HEAD
