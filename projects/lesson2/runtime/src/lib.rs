@@ -64,6 +64,7 @@ pub type Hash = primitives::H256;
 pub type DigestItem = generic::DigestItem<Hash>;
 
 /// Used for the module template in `./template.rs`
+/// 新增加的模板
 mod template;
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
@@ -232,6 +233,7 @@ impl sudo::Trait for Runtime {
 }
 
 /// Used for the module template in `./template.rs`
+///  新增加Event
 impl template::Trait for Runtime {
 	type Event = Event;
 }
@@ -251,6 +253,7 @@ construct_runtime!(
 		TransactionPayment: transaction_payment::{Module, Storage},
 		Sudo: sudo,
 		// Used for the module template in `./template.rs`
+		// 新增加
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 	}

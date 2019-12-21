@@ -20,6 +20,7 @@ pub trait Trait: system::Trait {
 }
 
 // This module's storage items.
+// 声明一个简单的getter, 返回值是一个Option, u32类型 TemplateModule是新的模块名
 decl_storage! {
 	trait Store for Module<T: Trait> as TemplateModule {
 		// Just a dummy storage item.
@@ -30,6 +31,7 @@ decl_storage! {
 }
 
 // The module's dispatchable functions.
+// 定义设置和修改存储值的 runtime 函数
 decl_module! {
 	/// The module declaration.
 	pub struct Module<T: Trait> for enum Call where origin: T::Origin {
@@ -40,12 +42,15 @@ decl_module! {
 		// Just a dummy entry point.
 		// function that can be called by the external world as an extrinsics call
 		// takes a parameter of the type `AccountId`, stores it and emits an event
+		// 该函数允许用户发送一条签名消息，该消息将 u32 放入 runtime 存储中。
 		pub fn do_something(origin, something: u32) -> Result {
 			// TODO: You only need this if you want to check it was signed.
+			// 检查签名, 确保消息是经过有效帐户签名的。
 			let who = ensure_signed(origin)?;
 
 			// TODO: Code to execute when something calls this.
 			// For example: the following line stores the passed in u32 in the storage
+			// 存储 u32 value
 			Something::put(something);
 
 			// here we are raising the Something event
@@ -122,10 +127,11 @@ mod tests {
 	fn it_works_for_default_value() {
 		new_test_ext().execute_with(|| {
 			// Just a dummy test for the dummy funtion `do_something`
-			// calling the `do_something` function with a value 42
-			assert_ok!(TemplateModule::do_something(Origin::signed(1), 42));
+			// calling the `do_something` function with a value 42(25)
+			// 这里有疑问 ???
+			assert_ok!(TemplateModule::do_something(Origin::signed(1), 99942));
 			// asserting that the stored value is equal to what we stored
-			assert_eq!(TemplateModule::something(), Some(42));
+			assert_eq!(TemplateModule::something(), Some(25222));
 		});
 	}
 }
