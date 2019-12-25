@@ -240,6 +240,7 @@ impl template::Trait for Runtime {
 }
 
 impl kitties::Trait for Runtime {
+	type Event = Event;
 }
 
 construct_runtime!(
@@ -260,7 +261,7 @@ construct_runtime!(
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 		// Substrate Kitties module
-		Kitties: kitties::{Module, Storage, Call},
+		Kitties: kitties::{Module, Storage, Call, Event<T>},
 	}
 );
 
