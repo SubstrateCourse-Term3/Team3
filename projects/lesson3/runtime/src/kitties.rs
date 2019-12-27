@@ -6,6 +6,7 @@ use system::ensure_signed;
 pub trait Trait: system::Trait {
 }
 
+//数据结构
 #[derive(Encode, Decode, Default)]
 pub struct Kitty(pub [u8; 16]);
 
@@ -32,7 +33,13 @@ decl_module! {
 			let kitty = Kitty(dna);
 			let count = Self::kitties_count();
 			Kitties::insert(count, kitty);
-			KittiesCount::put(count + 1);
+			// KittiesCount::put(count + 1);
+			//作业: 检查count是否溢出
+			let new_count = count.checked_add(1).ok_or("Overflow adding a new kitty")?;
+			KittiesCount::put(new_count);
+			
+
+
 		}
 	}
 }
