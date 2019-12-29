@@ -1,9 +1,11 @@
+
 use support::{decl_module, decl_storage, ensure, StorageValue, StorageMap, traits::Randomness, dispatch, Parameter};
 use sp_runtime::traits::{SimpleArithmetic, Bounded};
 use codec::{Encode, Decode};
 use runtime_io::hashing::blake2_128;
 use system::ensure_signed;
 use rstd::result;
+
 
 pub trait Trait: system::Trait {
 	type KittyIndex: Parameter + SimpleArithmetic + Bounded + Default + Copy;
@@ -33,11 +35,14 @@ decl_module! {
 			let sender = ensure_signed(origin)?;
 
 			// 作业：重构create方法，避免重复代码
-
+			/*
 			let kitty_id = Self::kitties_count();
 			if kitty_id == T::KittyIndex::max_value() {
 				return Err("Kitties count overflow");
 			}
+			*/
+			//新增
+			let kitty_id = Self::next_kitty_id()?;
 
 			// Generate a random 128bit value
 			let payload = (
@@ -68,16 +73,23 @@ decl_module! {
 	}
 }
 
-fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
+fn combine_dna(index: usize, dna1: u8, dna2: u8, selector: u8) -> u8 {
 	// 作业：实现combine_dna
 	// 伪代码：
 	// selector.map_bits(|bit, index| if (bit == 1) { dna1 & (1 << index) } else { dna2 & (1 << index) })
 	// 注意 map_bits这个方法不存在。只要能达到同样效果，不局限算法
 	// 测试数据：dna1 = 0b11110000, dna2 = 0b11001100, selector = 0b10101010, 返回值 0b11100100
-	return dna1;
+	let mut new_dna: u8 = 0;
+	if dna1 == 1 {
+		new_dna = dna1 & 1 << index;
+	} else {
+		new_dna = dna2 & 1 << index;
+	}
+	return new_dna;
 }
 
 impl<T: Trait> Module<T> {
+	// 生成一个16位长度的随机数
 	fn random_value(sender: &T::AccountId) -> [u8; 16] {
 		let payload = (
 			<randomness_collective_flip::Module<T> as Randomness<T::Hash>>::random_seed(),
@@ -126,7 +138,7 @@ impl<T: Trait> Module<T> {
 
 		// Combine parents and selector to create new kitty
 		for i in 0..kitty1_dna.len() {
-			new_dna[i] = combine_dna(kitty1_dna[i], kitty2_dna[i], selector[i]);
+			new_dna[i] = combine_dna(i, kitty1_dna[i], kitty2_dna[i], selector[i]);
 		}
 
 		Self::insert_kitty(sender, kitty_id, Kitty(new_dna));
