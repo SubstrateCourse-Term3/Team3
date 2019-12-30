@@ -1,4 +1,3 @@
-
 [dependencies.aura]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
