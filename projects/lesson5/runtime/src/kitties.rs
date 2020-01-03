@@ -55,6 +55,7 @@ decl_module! {
 		// 作业：实现 transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex)
 		// 使用 ensure! 来保证只有主人才有权限调用 transfer
 		// 使用 OwnedKitties::append 和 OwnedKitties::remove 来修改小猫的主人
+
 		
 		fn transfer_from(from: T::AccountId, to: T::AccountId, kitty_id: T::Hash) -> Result {
         let owner = Self::owner_of(kitty_id).ok_or("No owner for this kitty")?;
@@ -69,6 +70,7 @@ decl_module! {
 
         let new_owned_kitty_count_from = owned_kitty_count_from.checked_sub(1)
             .ok_or("Transfer causes underflow of 'from' kitty balance")?;
+
 
         let kitty_index = <OwnedKittiesIndex<T>>::get(kitty_id);
         if kitty_index != new_owned_kitty_count_from {
@@ -89,7 +91,7 @@ decl_module! {
         Self::deposit_event(RawEvent::Transferred(from, to, kitty_id));
 
         Ok(())
-               }
+
 	}
 }
 
