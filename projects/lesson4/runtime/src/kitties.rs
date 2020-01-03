@@ -34,7 +34,23 @@ decl_module! {
 
 			// 作业：重构create方法，避免重复代码
 
-			let kitty_id = Self::kitties_count();
+			let nonce = <None<T>>::get();
+			let random_hash = (<system::Module<T>>::random_seed(), &sender, nonce)
+				.using_encoded(<T as system::Trait>::Hashing::hash);
+				
+			let new_kitty = Kitty {
+				id: random_hash,
+				dna: random_hash,
+				price: <T::Balance as As<u64>>::sa(0),
+				gen: 0,
+			};
+
+			Self::mint(sender, random_hash, new_kitty)?;
+
+            <Nonce<T>>::mutate(|n| *n += 1);
+
+            Ok(())
+			/*let kitty_id = Self::kitties_count();
 			if kitty_id == T::KittyIndex::max_value() {
 				return Err("Kitties count overflow");
 			}
@@ -56,7 +72,7 @@ decl_module! {
 			// Store the ownership information
 			let user_kitties_id = Self::owned_kitties_count(&sender);
 			<OwnedKitties<T>>::insert((sender.clone(), user_kitties_id), kitty_id);
-			<OwnedKittiesCount<T>>::insert(sender, user_kitties_id + 1.into());
+			<OwnedKittiesCount<T>>::insert(sender, user_kitties_id + 1.into());*/
 		}
 
 		/// Breed kitties
