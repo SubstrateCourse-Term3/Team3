@@ -1,11 +1,12 @@
-use support::{decl_module, decl_storage, ensure, StorageValue, StorageMap, traits::Randomness, dispatch, Parameter};
+use support::{decl_module, decl_storage, ensure, StorageValue, StorageMap, traits::Randomness, dispatch, Parameter,print};
+use support::traits::{Currency,ReservableCurrency,ExistenceRequirement};
 use sp_runtime::traits::{SimpleArithmetic, Bounded, Member};
 use codec::{Encode, Decode};
 use runtime_io::hashing::blake2_128;
 use system::ensure_signed;
 use rstd::result;
 
-pub trait Trait: system::Trait {
+pub trait Trait: system::Trait + balances::Trait {
 	type KittyIndex: Parameter + Member + SimpleArithmetic + Bounded + Default + Copy;
 }
 
@@ -26,6 +27,10 @@ decl_storage! {
 		/// Stores the total number of kitties. i.e. the next kitty index
 		pub KittiesCount get(fn kitties_count): T::KittyIndex;
 
+		pub KittyPrice get(fn kitty_price):map T::KittyIndex => T::Balance;
+
+		pub KittyOwner get(fn kitty_owner):map T::KittyIndex => T::AccountId;
+
 		pub OwnedKitties get(fn owned_kitties): map (T::AccountId, Option<T::KittyIndex>) => Option<KittyLinkedItem<T>>;
 	}
 }
@@ -36,11 +41,9 @@ decl_module! {
 		pub fn create(origin) {
 			let sender = ensure_signed(origin)?;
 			let kitty_id = Self::next_kitty_id()?;
-
-			// Generate a random 128bit value
+			// // Generate a random 128bit value
 			let dna = Self::random_value(&sender);
-
-			// Create and store kitty
+			// // Create and store kitty
 			let kitty = Kitty(dna);
 			Self::insert_kitty(&sender, kitty_id, kitty);
 		}
@@ -55,6 +58,30 @@ decl_module! {
 		// 作业：实现 transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex)
 		// 使用 ensure! 来保证只有主人才有权限调用 transfer
 		// 使用 OwnedKitties::append 和 OwnedKitties::remove 来修改小猫的主人
+		pub fn transfer(origin,to: T::AccountId,kitty_id:T::KittyIndex){
+			let sender = ensure_signed(origin)?;
+			Self::do_transfer(&sender,&to,kitty_id)?;
+		}
+
+		pub fn sell(origin,kitty_id:T::KittyIndex,price:T::Balance){
+			let sender = ensure_signed(origin)?;
+			let kitty = <OwnedKitties<T>>::read(&sender,Some(kitty_id));
+			ensure!(kitty.prev != None || kitty.next !=None,"Your are not the kitty's owner");
+			<KittyPrice<T>>::insert(kitty_id,price);
+		}
+
+		pub fn buy(origin,kitty_id:T::KittyIndex){
+			let sender = ensure_signed(origin)?;
+			let price = Self::kitty_price(kitty_id);
+			ensure!(price>0.into(),"The kitty is not selling");
+			let sender_balance = <balances::Module<T>>::free_balance(&sender);
+			ensure!(sender_balance>price,"You do not have enough money");
+			let kitty_owner = Self::kitty_owner(kitty_id);
+			<KittyPrice<T>>::remove(kitty_id);
+			<balances::Module<T> as Currency<_>>::transfer(&sender,&kitty_owner,price,ExistenceRequirement::AllowDeath)?;
+			//TODO Self::do_transfer
+			Self::do_transfer(&kitty_owner,&sender,kitty_id);
+		}
 	}
 }
 
@@ -65,7 +92,7 @@ impl<T: Trait> OwnedKitties<T> {
 
 	fn write_head(account: &T::AccountId, item: KittyLinkedItem<T>) {
  		Self::write(account, None, item);
- 	}
+	}
 
 	fn read(account: &T::AccountId, key: Option<T::KittyIndex>) -> KittyLinkedItem<T> {
  		<OwnedKitties<T>>::get((&account, key)).unwrap_or_else(|| KittyLinkedItem {
@@ -75,7 +102,10 @@ impl<T: Trait> OwnedKitties<T> {
  	}
 
 	fn write(account: &T::AccountId, key: Option<T::KittyIndex>, item: KittyLinkedItem<T>) {
- 		<OwnedKitties<T>>::insert((&account, key), item);
+		 <OwnedKitties<T>>::insert((&account, key.clone()), item);
+		 if(key.is_some()){
+			 <KittyOwner<T>>::insert(key.unwrap(),account);
+		 }
  	}
 
 	pub fn append(account: &T::AccountId, kitty_id: T::KittyIndex) {
@@ -117,7 +147,8 @@ impl<T: Trait> OwnedKitties<T> {
  				next: next.next,
  			};
 
-  			Self::write(account, item.next, new_next);
+			Self::write(account, item.next, new_next);
+			<KittyOwner<T>>::remove(kitty_id);
 		}
 	}
 }
@@ -127,6 +158,16 @@ fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
 }
 
 impl<T: Trait> Module<T> {
+
+	fn do_transfer(owner:&T::AccountId,to:&T::AccountId,kitty_id:T::KittyIndex)->dispatch::Result{
+		let item = <OwnedKitties<T>>::read(owner,Some(kitty_id));
+		ensure!(owner!=to,"Can not transfer to yourself");
+		ensure!(item.prev != None || item.next !=None,"Your are not the kitty's owner");
+		<OwnedKitties<T>>::remove(owner,kitty_id);
+		<OwnedKitties<T>>::append(to,kitty_id);
+		Ok(())
+	}
+
 	fn random_value(sender: &T::AccountId) -> [u8; 16] {
 		let payload = (
 			<randomness_collective_flip::Module<T> as Randomness<T::Hash>>::random_seed(),
@@ -147,6 +188,7 @@ impl<T: Trait> Module<T> {
 
 	fn insert_owned_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex) {
 		// 作业：调用 OwnedKitties::append 完成实现
+		<OwnedKitties<T>>::append(owner,kitty_id);
   	}
 
 	fn insert_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex, kitty: Kitty) {
@@ -154,7 +196,7 @@ impl<T: Trait> Module<T> {
 		<Kitties<T>>::insert(kitty_id, kitty);
 		<KittiesCount<T>>::put(kitty_id + 1.into());
 
-		Self::insert_owned_kitty(owner, kitty_id);
+		Self::insert_owned_kitty(&owner, kitty_id);
 	}
 
 	fn do_breed(sender: &T::AccountId, kitty_id_1: T::KittyIndex, kitty_id_2: T::KittyIndex) -> dispatch::Result {
@@ -199,7 +241,7 @@ mod tests {
 	impl_outer_origin! {
 		pub enum Origin for Test {}
 	}
-
+	pub type Balance = u128;
 	// For testing the module, we construct most of a mock runtime. This means
 	// first constructing a configuration type (`Test`) which `impl`s each of the
 	// configuration traits of modules we want to use.
@@ -228,15 +270,46 @@ mod tests {
 		type AvailableBlockRatio = AvailableBlockRatio;
 		type Version = ();
 	}
+
+	parameter_types! {
+		pub const ExistentialDeposit: u64 = 0;
+		pub const TransferFee: u64 = 0;
+		pub const CreationFee: u64 = 0;
+	}
+
+	impl balances::Trait for Test {
+		/// The type for recording an account's balance.
+		type Balance = Balance;
+		/// What to do if an account's free balance gets zeroed.
+		type OnFreeBalanceZero = ();
+		/// What to do if a new account is created.
+		type OnNewAccount = ();
+		/// The ubiquitous event type.
+		type Event = ();
+		type DustRemoval = ();
+		type TransferPayment = ();
+		type ExistentialDeposit = ExistentialDeposit;
+		type TransferFee = TransferFee;
+		type CreationFee = CreationFee;
+	}
 	impl Trait for Test {
 		type KittyIndex = u32;
 	}
 	type OwnedKittiesTest = OwnedKitties<Test>;
+	type KittiesModule =Module<Test>;
 
 	// This function basically just builds a genesis storage key/value store according to
 	// our desired mockup.
 	fn new_test_ext() -> runtime_io::TestExternalities {
 		system::GenesisConfig::default().build_storage::<Test>().unwrap().into()
+	}
+
+	#[test]
+	fn create_kitty(){
+		new_test_ext().execute_with(||{
+			assert_ok!(KittiesModule::create(Origin::signed(1)));
+			println!("{:?}",KittiesCount::<Test>::get());
+		});
 	}
 
 	#[test]
