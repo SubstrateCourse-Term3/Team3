@@ -55,6 +55,12 @@ decl_module! {
 		// 作业：实现 transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex)
 		// 使用 ensure! 来保证只有主人才有权限调用 transfer
 		// 使用 OwnedKitties::append 和 OwnedKitties::remove 来修改小猫的主人
+
+		pub fn transfer(orign, to: T::AccountId, kitty_id: T::KittyIndex) {
+			let sender = ensure_signed(orign)?;
+
+			Self::do_tranfer(&sender, &to, kitty_id)?;
+		}
 	}
 }
 
@@ -147,6 +153,7 @@ impl<T: Trait> Module<T> {
 
 	fn insert_owned_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex) {
 		// 作业：调用 OwnedKitties::append 完成实现
+		<OwnedKitties<T>>::append(&owner, kitty_id);
   	}
 
 	fn insert_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex, kitty: Kitty) {
@@ -180,6 +187,20 @@ impl<T: Trait> Module<T> {
 		}
 
 		Self::insert_kitty(sender, kitty_id, Kitty(new_dna));
+
+		Ok(())
+	}
+
+	fn do_tranfer(owner: &T::AccountId, to: &T::AccountId, kitty_id: T::KittyIndex) -> dispatch::Result {
+		let kitty = Self::kitties(kitty_id);
+
+		ensure!(kitty.is_some(), "Invalid kitty_id");
+
+		//append, 新的主人
+		<OwnedKitties<T>>::append(&to, kitty_id);
+
+		//remove, 旧的主人
+		<OwnedKitties<T>>::remove(&owner, kitty_id);
 
 		Ok(())
 	}
