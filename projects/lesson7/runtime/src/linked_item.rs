@@ -3,10 +3,28 @@ use sp_runtime::traits::Member;
 use codec::{Encode, Decode};
 
 #[cfg_attr(feature = "std", derive(Debug, PartialEq, Eq))]
-#[derive(Encode, Decode)]
+// #[derive(Encode,Decode)]
 pub struct LinkedItem<Value> {
 	pub prev: Option<Value>,
 	pub next: Option<Value>,
+}
+
+impl<V> Encode for LinkedItem<V> where V:Encode{
+	fn encode_to<T: codec::Output>(&self,dest:&mut T){
+		dest.push(&self.prev);
+		dest.push(&self.next);
+	}
+}
+
+impl<V> codec::EncodeLike for LinkedItem<V> where V:Encode+'static{}
+
+impl <V>Decode for LinkedItem<V> where V:Decode{
+	fn decode<I: codec::Input>(input: &mut I)->Result<Self,codec::Error>{
+		Ok(LinkedItem{
+			prev:codec::Decode::decode(input)?,
+			next:codec::Decode::decode(input)?
+		})
+	}
 }
 
 pub struct LinkedList<Storage, Key, Value>(rstd::marker::PhantomData<(Storage, Key, Value)>);
