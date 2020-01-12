@@ -36,10 +36,6 @@ impl<Storage, Key, Value> LinkedList<Storage, Key, Value> where
  	}
 
     pub fn append(key: &Key, value: Value) {
-        // 作业：实现 append
-    }
 
-    pub fn remove(key: &Key, value: Value) {
-        // 作业：实现 remove
     }
 }
