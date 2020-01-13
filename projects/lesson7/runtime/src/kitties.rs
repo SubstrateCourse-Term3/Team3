@@ -3,7 +3,7 @@ use support::{
 	Parameter, traits::{Randomness, Currency, ExistenceRequirement}
 };
 use sp_runtime::traits::{SimpleArithmetic, Bounded, Member};
-use codec::{Encode, Decode};
+use codec::{Encode, Decode, EncodeLike};
 use runtime_io::hashing::blake2_128;
 use system::ensure_signed;
 use rstd::result;
@@ -18,8 +18,24 @@ pub trait Trait: system::Trait {
 
 type BalanceOf<T> = <<T as Trait>::Currency as Currency<<T as system::Trait>::AccountId>>::Balance;
 
-#[derive(Encode, Decode)]
+// #[derive(Encode, Decode)]
 pub struct Kitty(pub [u8; 16]);
+
+impl Encode for Kitty {
+	fn encode_to<T: codec::Output>(&self, dest: &mut T) {
+		dest.push(&self.0);
+	}
+}
+
+impl EncodeLike for Kitty {}
+
+impl Decode for Kitty {
+	fn decode<I: codec::Input>(input: &mut I) -> Result<Self, codec::Error> {
+		let mut buf = [0; 16];
+		input.read(&mut buf);
+		Ok(Kitty (buf))
+	}
+}
 
 type KittyLinkedItem<T> = LinkedItem<<T as Trait>::KittyIndex>;
 type OwnedKittiesList<T> = LinkedList<OwnedKitties<T>, <T as system::Trait>::AccountId, <T as Trait>::KittyIndex>;

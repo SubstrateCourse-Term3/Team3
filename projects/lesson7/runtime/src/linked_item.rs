@@ -1,13 +1,38 @@
 use support::{StorageMap, Parameter};
 use sp_runtime::traits::Member;
-use codec::{Encode, Decode};
+use codec::{Encode, Decode, EncodeLike};
 
 #[cfg_attr(feature = "std", derive(Debug, PartialEq, Eq))]
-#[derive(Encode, Decode)]
+// #[derive(Encode, Decode)]
 pub struct LinkedItem<Value> {
 	pub prev: Option<Value>,
 	pub next: Option<Value>,
 }
+
+impl<Value> Encode for LinkedItem<Value> where
+	Value: Parameter + Member + Copy,
+{
+	fn encode_to<T: codec::Output>(&self, dest: &mut T) {
+		dest.push(&self.prev);
+		dest.push(&self.next);	
+	}
+}
+
+impl<Value> EncodeLike for LinkedItem<Value> where
+	Value: Parameter + Member + Copy
+{}
+
+impl<Value> Decode for LinkedItem<Value> where
+	Value: Parameter + Member + Copy,
+{
+	fn decode<I: codec::Input>(input: &mut I) -> Result<Self, codec::Error> {
+		Ok(LinkedItem{
+			prev:codec::Decode::decode(input)?,
+			next:codec::Decode::decode(input)?
+		})
+	}
+}
+
 
 pub struct LinkedList<Storage, Key, Value>(rstd::marker::PhantomData<(Storage, Key, Value)>);
 
