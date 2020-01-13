@@ -1,9 +1,9 @@
-use support::{StorageMap, Parameter};
+use codec::{Decode, Encode};
 use sp_runtime::traits::Member;
-use codec::{Encode, Decode};
+use support::{Parameter, StorageMap};
 
 #[cfg_attr(feature = "std", derive(Debug, PartialEq, Eq))]
-#[derive(Encode, Decode)]
+// #[derive(Encode, Decode)]
 pub struct LinkedItem<Value> {
 	pub prev: Option<Value>,
 	pub next: Option<Value>,
@@ -11,12 +11,38 @@ pub struct LinkedItem<Value> {
 
 pub struct LinkedList<Storage, Key, Value>(rstd::marker::PhantomData<(Storage, Key, Value)>);
 
-impl<Storage, Key, Value> LinkedList<Storage, Key, Value> where
-    Value: Parameter + Member + Copy,
-    Key: Parameter,
-    Storage: StorageMap<(Key, Option<Value>), LinkedItem<Value>, Query = Option<LinkedItem<Value>>>,
+impl<H: Encode> codec::Encode for LinkedItem<H> {
+	fn encode_to<T: codec::Output>(&self, dest: &mut T) {
+		if let Some(prev) = &self.prev {
+			prev.encode_to(dest);
+		}
+		if let Some(next) = &self.next {
+			next.encode_to(dest)
+		}
+	}
+}
+
+impl<H: Encode> codec::EncodeLike for LinkedItem<H> {}
+
+impl<H: Decode> codec::Decode for LinkedItem<H> {
+	fn decode<I: codec::Input>(input: &mut I) -> Result<Self, codec::Error> {
+		let prev = <Option<H>>::decode(input).unwrap_or(None);
+		let next = <Option<H>>::decode(input).unwrap_or(None);
+	
+		Ok(LinkedItem {
+			prev,
+			next,
+		})
+	}
+}
+
+impl<Storage, Key, Value> LinkedList<Storage, Key, Value>
+where
+	Value: Parameter + Member + Copy,
+	Key: Parameter,
+	Storage: StorageMap<(Key, Option<Value>), LinkedItem<Value>, Query = Option<LinkedItem<Value>>>,
 {
-    fn read_head(key: &Key) -> LinkedItem<Value> {
+	fn read_head(key: &Key) -> LinkedItem<Value> {
 		Self::read(key, None)
 	}
 
