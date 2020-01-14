@@ -1,5 +1,5 @@
 use frame_support::{
-	decl_module, decl_storage, decl_event, decl_error, ensure, StorageValue, StorageMap,
+	decl_module, decl_storage, decl_event, decl_error, ensure, StorageValue, StorageMap,print,
 	Parameter, traits::{Randomness, Currency, ExistenceRequirement}
 };
 use sp_runtime::{traits::{SimpleArithmetic, Bounded, Member}, DispatchError};
@@ -8,8 +8,9 @@ use sp_io::hashing::blake2_128;
 use system::ensure_signed;
 use sp_std::result;
 use crate::linked_item::{LinkedList, LinkedItem};
+use system::{offchain::SubmitUnsignedTransaction};
 
-pub trait Trait: system::Trait {
+pub trait Trait: system::Trait+timestamp::Trait {
 	type Event: From<Event<Self>> + Into<<Self as system::Trait>::Event>;
 	type KittyIndex: Parameter + Member + SimpleArithmetic + Bounded + Default + Copy;
 	type Currency: Currency<Self::AccountId>;
@@ -19,6 +20,22 @@ pub trait Trait: system::Trait {
 type BalanceOf<T> = <<T as Trait>::Currency as Currency<<T as system::Trait>::AccountId>>::Balance;
 
 pub struct Kitty(pub [u8; 16]);
+
+#[derive(Encode,Decode,PartialEq,Eq,Clone,Debug)]
+pub enum BattleType{
+	WILD, //打野
+	KITTY,//对战
+}
+
+#[derive(Encode,Decode,Default,Clone,PartialEq)]
+pub struct KittyAttr<Moment> {
+	pub hp:u32, //血量
+	pub exp:u32,//经验值
+	pub ec:u32,
+	pub battle_begin: Option<Moment>,
+	pub battle_end: Option<Moment>,
+	pub battle_type: Option<BattleType>,
+}
 
 impl Encode for Kitty {
 	fn encode_to<T: Output>(&self, output: &mut T) {
@@ -50,6 +67,8 @@ decl_storage! {
 		pub KittyOwners get(fn kitty_owner): map T::KittyIndex => Option<T::AccountId>;
 		/// Get kitty price. None means not for sale.
 		pub KittyPrices get(fn kitty_price): map T::KittyIndex => Option<BalanceOf<T>>;
+
+		pub KittyAttrs get(fn kitty_attrs): map  T::KittyIndex => KittyAttr<T::Moment>;
 	}
 }
 
@@ -78,6 +97,7 @@ decl_error! {
 		PriceTooLow,
 		KittiesCountOverflow,
 		RequiresDifferentParents,
+		//TODO 添加错误信息
 	}
 }
 
@@ -157,6 +177,26 @@ decl_module! {
 
 			Self::deposit_event(RawEvent::Sold(owner, sender, kitty_id, kitty_price));
 		}
+		//对战
+		pub fn battle(origin,kitty_id:T::KittyIndex,target_id:T::KittyIndex){
+		}
+
+
+		//打野
+		pub fn battle_wild(origin,kitty_id:T::KittyIndex){
+
+		}
+
+		//回血
+		pub fn full_health(origin,kitty_id:T::KittyIndex){
+
+		}
+
+
+		fn offchain_worker(curr_block: T::BlockNumber){
+			Self::do_offchain(curr_block)
+		}
+
 	}
 }
 
@@ -165,6 +205,11 @@ fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
 }
 
 impl<T: Trait> Module<T> {
+	//判断猫是否处于战斗中，繁殖、再挑战、打野、回血都需调用
+	fn check_battling(kitty_id:T::KittyIndex)->bool{
+		false
+	}
+
 	fn random_value(sender: &T::AccountId) -> [u8; 16] {
 		let payload = (
 			T::Randomness::random_seed(),
@@ -192,6 +237,8 @@ impl<T: Trait> Module<T> {
 		<Kitties<T>>::insert(kitty_id, kitty);
 		<KittiesCount<T>>::put(kitty_id + 1.into());
 		<KittyOwners<T>>::insert(kitty_id, owner.clone());
+		//TODO 添加战斗属性默认值
+
 
 		Self::insert_owned_kitty(owner, kitty_id);
 	}
@@ -229,7 +276,25 @@ impl<T: Trait> Module<T> {
  		<OwnedKittiesList<T>>::remove(&from, kitty_id);
  		<OwnedKittiesList<T>>::append(&to, kitty_id);
  		<KittyOwners<T>>::insert(kitty_id, to);
- 	}
+	 }
+	//打野 
+	fn do_battle_wild(kitty_id:T::KittyIndex){
+
+	}
+	
+	//战后经验处理
+	fn do_exp(kitty_id:T::KittyIndex,exp:u32){
+
+	}
+
+	//回血，判断是否处于战斗中
+	fn do_full_health(kitty_id:T::KittyIndex){
+
+	}
+
+	 fn do_offchain(curr_block:T::BlockNumber){
+		print("给某只猫加攻击")
+	}
 }
 
 /// Tests for Kitties module
